@@ -1,0 +1,5 @@
+# Persistent handoff and future runner contract
+
+For mutating modes, persist in the project's existing canonical location; if absent and safe, `docs/HANDOFF.md`. Include timestamp, repo/root and branch, task ID, mode, state, owner/claim if relevant, baseline dirty paths, changed paths, acceptance criteria, executed checks and outcomes, evidence locations, incomplete verification, blockers, risks, gates, next READY candidates and concrete recovery instruction. Do not store secrets. Keep route and handoff consistent.
+
+Future runner (NOT part of this skill): open correct repo; invoke `/project-executor resume max-tasks=N time-budget=M`; await termination; inspect handoff; retry only recoverable failures within finite limits; stop on gates, repeated failures and usage exhaustion. Runner must not change intent, bypass permissions, activate paid API, or mark DONE without evidence. Obsidian may consume a derived summary but must never be the canonical state.
